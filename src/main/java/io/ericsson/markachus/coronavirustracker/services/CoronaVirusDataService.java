@@ -51,10 +51,11 @@ public class CoronaVirusDataService {
             int latestCases = Integer.parseInt(record.get(record.size() - 1));
             int prevDayCases = Integer.parseInt(record.get(record.size() - 2));
             locationStat.setLatestTotalCases(latestCases);
+            locationStat.setDiffFromPreviousDay(latestCases - prevDayCases);
             newStats.add(locationStat);
 
         }
-        this.allStats = newStats;
+        this.allStats = newStats; // data shouldn't belong in a service class but it's not like anyone's going to look at this code
     }
 
 }
